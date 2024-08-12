@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
 import Login from './Components/Login';
-import Register from './Components/Register';
+import Register from './Components/Register';  // 确保导入的是默认导出
 import TaskList from './Components/TaskList';
 
 function App() {
@@ -15,7 +15,7 @@ function App() {
 
   const handleLogin = () => {
     setIsLoggedIn(true);
-    navigate('/task-board'); // 确保在登录成功后立即导航
+    navigate('/task-board');
   };
 
   const handleLogout = () => {
@@ -31,5 +31,13 @@ function App() {
       <Route path="/task-board" element={isLoggedIn ? <TaskList /> : <Login onLogin={handleLogin} />} />
       <Route path="/" element={<Login onLogin={handleLogin} />} />
     </Routes>
+  );
+}
+
+export default function RootApp() {
+  return (
+    <Router>
+      <App />
+    </Router>
   );
 }

@@ -72,3 +72,5 @@ const Register = ({ onRegister }) => {
     </div>
   );
 };
+
+export default Register;  // 这里确保默认导出

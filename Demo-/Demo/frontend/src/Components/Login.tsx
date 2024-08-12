@@ -1,46 +1,43 @@
 import React, { useState } from 'react';
-import '../styles/Login.css';
 import { useNavigate } from 'react-router-dom';
+import '../styles/Login.css';
 
-const Register = ({ onRegister }) => {
+const Login: React.FC<{ onLogin: () => void }> = ({ onLogin }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
-  const navigate = useNavigate();
+  const navigate = useNavigate(); 
 
-  const handleRegisterClick = async (e: React.FormEvent) => {
+  const handleLoginClick = async (e: React.FormEvent) => {
     e.preventDefault();
-
+  
     try {
-      const response = await fetch('http://localhost:7001/api/user/register', {
+      const response = await fetch('http://localhost:7001/api/user/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({ username, password }),
       });
-
+  
       const data = await response.json();
       if (response.ok && data.success) {
-        onRegister(); // 注册成功后清除登录状态
+        localStorage.setItem('token', data.token);
+        onLogin();  // 调用传递的 onLogin 回调函数
       } else {
-        setError(data.message || 'Registration failed');
+        setError(data.message || 'Login failed');
       }
     } catch (err) {
       setError('An error occurred');
     }
   };
-
-  const handleLoginClick = (e: React.MouseEvent) => {
-    e.preventDefault();
-    onRegister(); // 确保点击 "Login" 按钮后清除登录状态
-  };
-
+  
   return (
     <div className="login-container">
       <div className="login-box">
-        <h1 className="login-title">Register</h1>
-        <form className="login-form" onSubmit={handleRegisterClick}>
+        <h1 className="login-title">Welcome to Coteam</h1>
+        <p className="login-subtitle">Your task management tool</p>
+        <form className="login-form" onSubmit={handleLoginClick}>
           <input 
             type="text" 
             className="login-input" 
@@ -61,14 +58,16 @@ const Register = ({ onRegister }) => {
             type="submit" 
             className="login-button"
           >
-            Register
+            Login
           </button>
         </form>
         {error && <p className="login-error">{error}</p>}
         <p className="login-footer">
-            Already have an account? <a href="#" onClick={handleLoginClick}>Login</a>
+          Don't have an account? <a href="#" onClick={() => navigate('/register')}>Sign up</a>
         </p>
       </div>
     </div>
   );
 };
+
+export default Login;
