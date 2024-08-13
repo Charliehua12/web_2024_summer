@@ -14,9 +14,9 @@ export default {
     host: 'localhost',
     port: 3306,
     username: 'root',
-    password: 'huazhen**499',
+    password: 'huazhen**499', // SOS ！！！ 请修改为自己数据库密码！！！
     database: 'coteam',
-    synchronize: true, // 在生产环境中建议将其设为 false
+    synchronize: true,
     logging: false,
   },
 } as MidwayConfig;
