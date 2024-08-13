@@ -1,282 +1,242 @@
-/* TaskList.css */
-
-/* 整个任务列表容器 */
 .task-list-container {
-    display: flex;
-    justify-content: flex-start;
-    align-items: flex-start;
-    gap: 20px;
-    padding: 20px;
-    overflow-x: auto;
-    height: 100%;
-    width: 100%;
-  }
-  
-  /* 任务列表列容器 */
-  .task-column {
-    background-color: #e3e3e3;
-    padding: 10px;
-    border-radius: 8px;
-    min-width: 250px;
-    max-width: 250px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-  
-  /* 任务列表列标题 */
-  .task-column-title {
-    margin: 0;
-    font-size: 1.2em;
-    cursor: pointer;
-    padding: 10px;
-    transition: transform 0.2s;
-  }
-  .task-column-title:hover {
-    transform: scale(1.03);
-  }
-  /* 任务列表列头部 */
-  .task-column-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 10px;
-  }
-  
-  /* 删除任务列表按钮 */
-  .delete-list-button {
-    background-color: red;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    padding: 5px;
-    cursor: pointer;
-    font-size: 0.9em;
-  }
-  
-  /* 添加任务按钮 */
-  .add-task-button {
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    padding: 5px;
-    cursor: pointer;
-    font-size: 0.9em;
-    transition: transform 0.2s;
-  }
-  
-  /* 鼠标悬停时略微放大 */
-  .add-task-button:hover {
-    transform: scale(1.03);
-  }
-  /* 任务卡片样式 */
-  .task-card {
-    background-color: white;
-    padding: 10px;
-    border-radius: 4px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-    cursor: pointer;
-    position: relative;
-    transition: transform 0.2s;
-  }
-  
-  /* 鼠标悬停时略微放大 */
-  .task-card:hover {
-    transform: scale(1.03);
-  }
-  
-  /* 删除任务卡片按钮 */
-  .delete-task-button {
-    position: absolute;
-    top: 5px;
-    right: 5px;
-    background-color: red;
-    color: white;
-    border: none;
-    border-radius: 50%;
-    padding: 2px 5px;
-    cursor: pointer;
-    font-size: 0.8em;
-  }
-  
-  /* 添加任务列表容器 */
-  .add-task-list-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-width: 150px;
-    padding: 10px;
-  }
-  
-  /* 添加任务列表按钮 */
-  .add-task-list-button {
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    padding: 10px;
-    cursor: pointer;
-    font-size: 1em;
-    transition: transform 0.2s;
-  }
-  .add-task-list-button:hover {
-    transform: scale(1.03);
-  }
-  /* 任务详情模态框 */
-  .task-modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: rgba(0, 0, 0, 0.5);
-  }
-  
-  .task-modal-content {
-    background: #ffffff;
-    border-radius: 8px;
-    padding: 20px;
-    width: 400px;
-    max-width: 90%;
-    position: relative;
-  }
-  
-  .task-modal-title {
-    width: 90%;
-    padding: 12px 16px; /* 更加舒适的内边距 */
-    margin-bottom: 10px;
-    border-radius: 6px; /* 更加圆润的边角 */
-    border: 1px solid #ccc;
-    font-size: 1.1em; /* 更大的字体 */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* 轻微的阴影效果 */
-    background-color: #f9f9f9; /* 柔和的背景颜色 */
-    transition: transform 0.2s, box-shadow 0.2s; /* 添加变换效果 */
+  display: flex;
+  padding: 20px;
 }
 
-.task-modal-title:focus {
-    border-color: #007bff; /* 聚焦时的边框颜色 */
-    box-shadow: 0 0 8px rgba(0, 123, 255, 0.6); /* 聚焦时的阴影效果 */
-    transform: scale(1.04); /* 聚焦时轻微放大 */
+.task-column {
+  width: 250px;
+  padding: 15px;
+  margin-right: 15px;
+  border-radius: 8px;
+  background-size: cover;
+  color: white;
+  transition: transform 0.2s;
 }
-  
-  .save-task-button,
-  .close-modal-button {
-    background-color: #007bff;
-    color: #ffffff;
-    border: none;
-    border-radius: 4px;
-    padding: 10px;
-    cursor: pointer;
-    font-size: 1em;
-    margin: 5px;
-    width: 100%;
-    transition: background-color 0.3s;
-  }
-  
-  .save-task-button {
-    background-color: #28a745; /* 绿色背景 */
-  }
-  
-  .save-task-button:hover,
-  .close-modal-button:hover {
-    background-color: #0056b3; /* 更深的蓝色或绿色 */
-  }
-  
-  .task-modal-comments {
-    margin-top: 10px;
-  }
-  
-  .comment {
-    padding: 8px;
-    margin: 4px 0;
-    border-radius: 4px;
-    background-color: #f1f1f1;
-    cursor: pointer;
-    transition: transform 0.2s;
-    display: flex;
-    justify-content: space-between; /* Align delete button to the right */
-    align-items: center;
-  }
-  
-  .delete-comment-button {
-    background: none;
-    border: none;
-    color: #dc3545;
-    font-size: 16px;
-    cursor: pointer;
-    padding: 0;
-  }
-  
-  .delete-comment-button:hover {
-    color: #c82333;
-  }
-  
-  .enter-button {
-    margin-left: 8px;
-    padding: 8px 16px;
-    background-color: #28a745;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  
-  .enter-button:hover {
-    background-color: #218838;
-  }
-  
-  
-  .comment:hover {
-    transform: scale(1.02);
-  }
-  
-  .comment-input-container {
-    display: flex;
-    align-items: center;
-    margin-top: 10px;
-  }
-  
-  .comment-input-container input {
-    flex: 1;
-    padding: 8px;
-    border-radius: 4px;
-    border: 1px solid #ccc;
-  }
-  .comment-list {
-    max-height: 200px; /* 设置评论区的最大高度 */
-    overflow-y: auto;  /* 当评论区内容过多时，添加滚动条 */
-  }
-  
-  .comment {
-    word-wrap: break-word; /* 长评论自动换行 */
-  }
-  .enter-button {
-    margin-left: 8px;
-    padding: 8px 16px;
-    background-color: #28a745;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  
-  .enter-button:hover {
-    background-color: #218838;
-  }
-  
-  
-  /* 关闭模态框按钮 */
-  .close-modal-button {
-    background-color: red;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    padding: 10px 20px;
-    cursor: pointer;
-    margin-top: 20px;
-  }
-  
+
+.task-column:hover {
+  transform: scale(1.05);
+}
+
+.task-column-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.task-column-title {
+  font-size: 25px;
+  font-weight: bold;
+  margin: 0;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.task-column-title:hover {
+  transform: scale(1.05);
+}
+
+
+.delete-list-button,
+.delete-task-button,
+.delete-comment-button {
+  background-color: #f44336; /* 红色背景 */
+  color: white;
+  font-size: 12px;
+  cursor: pointer;
+  border: none;
+  border-radius: 50%; /* 使按钮变成圆形 */
+  padding: 5px; /* 调整按钮的大小 */
+  width: 24px; /* 按钮的宽度 */
+  height: 24px; /* 按钮的高度 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.2s ease-in-out, background-color 0.2s ease-in-out;
+}
+
+.delete-list-button:hover {
+  transform: scale(1.1);
+}
+
+.task-card {
+  background-color: rgba(255, 255, 255, 0.2);
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: transform 0.2s;
+}
+
+.task-card:hover {
+  transform: scale(1.05);
+}
+
+.add-task-button {
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.3);
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: transform 0.2s;
+}
+
+.add-task-button:hover {
+  transform: scale(1.05);
+}
+
+.add-task-list-container {
+  display: flex;
+  align-items: center;
+}
+
+.add-task-list-button {
+  background-color: #3b5998;
+  color: white;
+  padding: 15px;
+  border-radius: 8px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.add-task-list-button:hover {
+  transform: scale(1.05);
+}
+
+.task-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.task-modal-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  width: 500px;
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s;
+}
+
+.task-modal-content:hover {
+  transform: scale(1.02);
+}
+
+.task-modal-title {
+  font-size: 20px;
+  margin-bottom: 20px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  transition: transform 0.2s;
+}
+
+.task-modal-title:hover {
+  transform: scale(1.05);
+}
+
+.task-modal-comments h3,
+.task-modal-attachments h3 {
+  margin-bottom: 10px;
+}
+
+.comment-input-container {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.comment-input-container input {
+  flex: 1;
+  padding: 8px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  transition: transform 0.2s;
+}
+
+.comment-input-container input:hover {
+  transform: scale(1.02);
+}
+
+.comment-list {
+  margin-top: 10px;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.comment-item {
+  background-color: #f1f1f1;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: transform 0.2s;
+}
+
+.comment-item:hover {
+  transform: scale(1.05);
+}
+
+.comment {
+  word-wrap: break-word;
+}
+
+.delete-attachment-button {
+  background: none;
+  border: none;
+  color: #333;
+  font-size: 14px;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.delete-attachment-button:hover {
+  transform: scale(1.1);
+}
+
+.task-modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+}
+
+.task-modal-footer button {
+  padding: 10px 20px;
+  margin-left: 10px;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.task-modal-footer button:first-child {
+  background-color: #4caf50;
+  color: white;
+}
+
+.task-modal-footer button:last-child {
+  background-color: #f44336;
+  color: white;
+}
+
+.task-modal-footer button:hover {
+  transform: scale(1.05);
+}
