@@ -1,3 +1,6 @@
+- https://github.com/Charliehua12/web_2024_summer
+- 上述是github仓库地址
+
 # WELCOME TO coteam ！！！
 ## 作者叨叨
   曾几何时，我天真的选择了web这一个暑期学校课程，我曾经信誓旦旦地跟同学们说
@@ -16,6 +19,21 @@
 后端：
 - cd backend
 - npm run dev
+
+mysql:
+
+mysql -u root -p -h localhost -P 3306
+
+CREATE DATABASE coteam;
+
+USE coteam;
+
+CREATE TABLE user (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  username VARCHAR(255) UNIQUE NOT NULL,
+  password VARCHAR(255) NOT NULL
+);
+
 ### 备用手段
 - 若实在无法运行，可以查看zip里面的Attention视频，里面有在本地运行跑起来的效果。。。
 - 即使运行也欢迎查看！！！
@@ -23,7 +41,7 @@
 ## 关于功能与技术栈
   不知道为什么，反正我自己看moddle上面评分任务的8条实际上只有7条🤔，反正在上面的7条功能理论上都实现了（）。。。
   
-  亮点：比较好看的list颜色和UI互动，为list，task，comment以及各种按钮增加了动态变大效果，并且都有重命名（评论没有，感觉不需要），增加，删除功能，附件同理
+  亮点：比较好看的list颜色和UI互动，为list，task，comment以及各种按钮增加了动态变大效果，并且都有重命名（评论没有重命名，感觉不需要），增加，删除功能，附件同理
   
   
   技术栈：使用mysql存储数据 并使用typeorm进行操纵，用于存储各种类型的数据并查询。使用了bcrypt用于密码加密，使用jwt用于在中间件中鉴别用户身份，提供对部分api的保护。
