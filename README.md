@@ -20,7 +20,7 @@
 - cd backend
 - npm run dev
 
-mysql:
+mysql:（本地安装了mysql才能运行应该）
 
 mysql -u root -p -h localhost -P 3306
 
