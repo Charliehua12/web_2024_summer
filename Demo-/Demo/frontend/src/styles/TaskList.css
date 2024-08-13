@@ -1,6 +1,7 @@
 .task-list-container {
   display: flex;
   padding: 20px;
+  align-items: flex-start; /* 修改为顶部对齐 */
 }
 
 .task-column {
@@ -11,8 +12,8 @@
   background-size: cover;
   color: white;
   transition: transform 0.2s;
+  align-self: flex-start; /* 添加此行以确保每个列表的高度独立 */
 }
-
 .task-column:hover {
   transform: scale(1.05);
 }
